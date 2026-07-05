@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import WeatherContext from "../../context";
+import { WeatherContext } from "../../context";
 import AddTpFavorite from "./AddTpFavorite";
 import WeatherCondition from "./WeatherCondition";
 import WeatherHeadline from "./WeatherHeadline";

@@ -4,7 +4,7 @@ import HumidityIcon from "../../assets/icons/humidity.svg";
 import TempMaxIcon from "../../assets/icons/temp-max.svg";
 import TempMinIcon from "../../assets/icons/temp-min.svg";
 import WindIcon from "../../assets/icons/wind.svg";
-import WeatherContext from "../../context";
+import { WeatherContext } from "../../context";
 
 export default function WeatherCondition() {
   const { weatherData } = useContext(WeatherContext);

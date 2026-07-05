@@ -7,7 +7,7 @@ import PinIcon from "../../assets/pin.svg";
 import RainIcon from "../../assets/rainy.svg";
 import ThunderIcon from "../../assets/thunder.svg";
 
-import WeatherContext from "../../context";
+import { WeatherContext } from "../../context";
 import { getFormattedDate } from "../../utils/date-utils";
 
 export default function WeatherHeadline() {
