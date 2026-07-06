@@ -38,7 +38,12 @@ function getLocations() {
 function getLocationByName(location) {
   if (!location) return null;
 
-  const filter = data.filter((item) => item.location === location);
+  const searchTerm = location.trim().toLowerCase();
+
+  const filter = data.filter(
+    (item) => item.location.toLowerCase() === searchTerm,
+  );
+
   if (filter.length > 0) {
     return filter[0];
   } else {

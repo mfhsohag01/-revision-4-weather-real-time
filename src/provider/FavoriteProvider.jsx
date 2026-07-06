@@ -3,7 +3,16 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const FavoriteProvider = ({ children }) => {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
+
   const addToFavorites = (latitude, longitude, location) => {
+    const alreadyExists = favorites.some(
+      (fav) => fav.latitude === latitude && fav.longitude === longitude,
+    );
+
+    if (alreadyExists) {
+      return;
+    }
+
     setFavorites([
       ...favorites,
       {
@@ -13,12 +22,12 @@ const FavoriteProvider = ({ children }) => {
       },
     ]);
   };
+
   const removeFromFavorites = (location) => {
-    const restFavorites = favorites.filter((fav) => {
-      fav.location !== location;
-    });
+    const restFavorites = favorites.filter((fav) => fav.location !== location);
     setFavorites(restFavorites);
   };
+
   return (
     <FavoriteContext.Provider
       value={{ favorites, addToFavorites, removeFromFavorites }}
