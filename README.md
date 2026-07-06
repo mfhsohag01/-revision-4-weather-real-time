@@ -1,90 +1,198 @@
-Weather Real-Time 🌦️
+# 🌦️ Weather Real-Time
 
-A real-time weather dashboard built with React, Vite, and Tailwind CSS, powered by the OpenWeather API. Search any city, view live weather data, and save your favorite locations for quick access.
+A modern real-time weather dashboard built with **React**, **Vite**, and **Tailwind CSS**, powered by the **OpenWeather API**.
 
-Features
+Search any city, view live weather conditions, and save your favorite locations for quick access. This project focuses on clean UI, reusable React architecture, and solving real-world frontend challenges such as debounce timing, race conditions, duplicate prevention, and persistent state management.
 
-Real-time weather data — current conditions for any city worldwide via the OpenWeather API
-Smart search — geocoding-based city search (name → lat/lng → weather), with debounced input for smooth typing
-Favorites system — save cities to a favorites list with duplicate prevention (matched by coordinates)
-Click-outside-to-close — favorites modal closes automatically when clicking outside
-Persistent favorites — saved locations stored in localStorage via Context API
-Dynamic background — background imagery adapts to current weather conditions
-Loading states — clear loading indicators while fetching data
+---
 
-Tech Stack
+## 🚀 Live Demo
 
-React 19
-Vite — build tool and dev server
-Tailwind CSS v4 — styling
-Context API — global state management (weather data, favorites)
-OpenWeather API — weather data + geocoding
+🔗 https://revision-4-weather-real-time-5ldf-alpha.vercel.app
 
-Project Structure (Key Files)
+---
 
-src/
-├── components/
-│ ├── Header.jsx # Navigation + favorites modal trigger
-│ ├── Search.jsx # City search with debounced input
-│ └── FavoriteListModal.jsx # Favorites list UI
-├── context/
-│ ├── WeatherContext.jsx # Weather data state
-│ └── FavoriteContext.jsx # Favorites state + localStorage sync
-├── hooks/
-│ ├── useWeather.js # Weather fetching logic
-│ └── useDebounce.js # Debounce hook for search input
-└── data/
-└── location-data.js # Location lookup helpers
+## 📸 Preview
 
-Getting Started
+> Add your project screenshot here.
 
-Prerequisites
+```md
+![Weather Dashboard](./public/preview.png)
+```
 
-Node.js (LTS recommended)
-An OpenWeather API key
+---
 
-Installation
+## ✨ Features
 
-bashgit clone https://github.com/mfhsohag01/weather-real-time.git
+- 🌍 Real-time weather information using the OpenWeather API
+- 🔍 Smart city search using geocoding
+- ⌨️ Debounced search for smooth typing experience
+- ⭐ Save favorite cities
+- 🚫 Duplicate favorite prevention
+- 💾 Persistent favorites using localStorage
+- ❌ Click-outside-to-close favorites modal
+- 🎨 Dynamic background based on current weather
+- ⏳ Loading spinner while fetching weather
+- 📱 Responsive user interface
+- ⚡ Fast performance powered by Vite
+
+---
+
+## 🛠️ Tech Stack
+
+- React 19
+- Vite
+- Tailwind CSS v4
+- JavaScript (ES6+)
+- Context API
+- OpenWeather API
+- LocalStorage
+
+---
+
+## 📁 Project Structure
+
+```text
+weather-real-time/
+├── public/
+│   └── preview.png                  # Project screenshot
+│
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx               # Navbar + Favorites modal + Click-outside-close
+│   │   ├── Search.jsx               # Debounced city search
+│   │   └── FavoriteListModal.jsx    # Favorites modal UI
+│   │
+│   ├── context/
+│   │   ├── WeatherContext.jsx       # Weather global state
+│   │   └── FavoriteContext.jsx      # Favorites state + localStorage
+│   │
+│   ├── hooks/
+│   │   ├── useWeather.js            # Weather fetching logic
+│   │   └── useDebounce.js           # Debounce hook
+│   │
+│   ├── data/
+│   │   └── location-data.js         # Location lookup helpers
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── .gitignore
+├── .npmrc                           # legacy-peer-deps=true
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+└── vite.config.js
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js (LTS recommended)
+- npm
+- OpenWeather API Key
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/mfhsohag01/weather-real-time.git
+
 cd weather-real-time
+
 npm install
+```
 
-Environment Variables
+---
 
-Create a .env file in the root directory:
+## 🔑 Environment Variables
 
+Create a `.env` file in the project root.
+
+```env
 VITE_OPENWEATHER_API_KEY=your_api_key_here
+```
 
-Run Locally
+---
 
-bashnpm run dev
+## ▶️ Run Locally
 
-The app will be available at http://localhost:5173.
+```bash
+npm run dev
+```
 
-Build for Production
+The application will be available at:
 
-bashnpm run build
+```text
+http://localhost:5173
+```
 
-Known Bugs Fixed Along the Way
+---
 
-This project has been a hands-on learning ground for real-world React debugging, including:
+## 📦 Build for Production
 
-Case-sensitive and partial-match search bugs causing incorrect location fallback
-A subtle race condition where incomplete typed input, combined with debounce timing, triggered an unintended default location fetch
-useContext destructuring mismatches (array vs. object)
-Missing useEffect dependencies causing stale state
-Missing return in array filter callbacks
+```bash
+npm run build
+```
 
-Roadmap
+---
 
-Autocomplete-style substring search
-Improved error handling UI (network failures, invalid cities)
-Deployment (Netlify/Vercel)
+## 🧩 Engineering Challenges Solved
 
-Author
+This project was also a practical exercise in debugging real-world React applications.
 
-mfhsohag01 — GitHub
+### Search & Debounce
 
-License
+- Fixed case-sensitive city search
+- Prevented incorrect weather fetch caused by incomplete debounced input
+- Solved debounce race condition using `useCallback`
 
-This project is open source and available under the MIT License.
+### Favorites
+
+- Implemented duplicate prevention using latitude & longitude comparison
+- Added click-outside detection to close the favorites modal
+- Fixed missing `return` inside the `filter()` callback
+
+### React
+
+- Fixed Context API destructuring mismatches
+- Resolved stale state caused by missing dependencies
+- Improved component structure through refactoring
+
+### UI & UX
+
+- Added loading spinner while fetching weather
+- Verified loading state using Slow 4G throttling
+- Fixed dynamic background rendering issues
+
+---
+
+## 🚀 Future Improvements
+
+- 🔍 Autocomplete city suggestions
+- 📅 5-day weather forecast
+- 🌡️ Celsius / Fahrenheit toggle
+- 🌙 Dark / Light mode
+- ⚠️ Better error handling UI
+- 📲 Progressive Web App (PWA)
+
+---
+
+## 👨‍💻 Author
+
+**Sohag**
+
+GitHub: https://github.com/mfhsohag01
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
